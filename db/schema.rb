@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218191056) do
+ActiveRecord::Schema.define(version: 20170218204905) do
 
   create_table "aliases", force: :cascade do |t|
     t.string   "name"
@@ -77,11 +77,11 @@ ActiveRecord::Schema.define(version: 20170218191056) do
     t.string   "gender"
     t.boolean  "bondsmage"
     t.boolean  "organization_leader"
-    t.integer  "city_state_id"
-    t.integer  "organization_id"
     t.integer  "divinity_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "organization_id"
+    t.integer  "city_state_id"
     t.index ["city_state_id"], name: "index_characters_on_city_state_id"
     t.index ["divinity_id"], name: "index_characters_on_divinity_id"
     t.index ["organization_id"], name: "index_characters_on_organization_id"

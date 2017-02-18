@@ -12,8 +12,8 @@ class CreateCharacters < ActiveRecord::Migration[5.0]
       t.string :gender
       t.boolean :bondsmage
       t.boolean :organization_leader
-      t.references :city_state, foreign_key: true
-      t.references :organization, foreign_key: true
+      # t.references :city_state, foreign_key: true
+      # t.references :organization, foreign_key: true
       t.references :divinity, foreign_key: true
 
       t.timestamps
