@@ -1,2 +1,36 @@
-<h1>GBapi</h1>
-<h2>The Gentleman Bastard API</h2>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3">GBapi</h1>
+    <p class="lead">The Gentleman Bastard API</p>
+    <hr class="my-4">
+    <p>All the Gentleman Bastard Series data you could ask for: <br>Books, Characters, Aliases, Organizations, Divinities, City States, and Points of Interest! </p>
+  </div>
+
+  <div class="row">
+    <div class="card col-xs-12 col-md-4">
+      <div class="card-block">
+        <h4 class="card-title">What is this?</h4>
+        <p class="card-text">The GBapi is the only place for easy to use data pertaining to the Gentleman Bastard series by Scott Lynch.</p>
+        <%= link_to 'Learn More!', about_path, class: 'card-link' %>
+      </div>
+    </div>
+
+    <div class="card col-xs-12 col-md-4">
+      <div class="card-block">
+        <h4 class="card-title">How can I use it?</h4>
+        <p class="card-text">All the data is accessible through the HTTP web API. Consult the documentation to get started.</p>
+        <%= link_to 'To the docuentation!', documentation_path, class: 'card-link' %>
+      </div>
+    </div>
+
+    <div class="card col-xs-12 col-md-4">
+      <div class="card-block">
+        <h4 class="card-title">How Can I support/get involved?</h4>
+        <p class="card-text">Hit me up on twitter or github!</p>
+        <%= link_to 'Twitter', 'https://twitter.com/zkirchin', target: 'blank', class: 'card-link' %>
+        <%= link_to 'Github', 'https://github.com/zkirchin', target: 'blank', class: 'card-link' %>
+      </div>
+    </div>
+  </div>
+
+</div>

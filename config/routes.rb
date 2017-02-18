@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   get '/about' => 'static_pages#about', as: :about
-  get '/documentation' => 'static_pages#documentation', as: :documenation
+  get '/documentation' => 'static_pages#documentation', as: :documentation
 
   scope module: 'api' do
     namespace :v1 do
