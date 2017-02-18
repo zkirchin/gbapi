@@ -10,14 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214025643) do
+ActiveRecord::Schema.define(version: 20170218191056) do
 
   create_table "aliases", force: :cascade do |t|
     t.string   "name"
     t.integer  "divinity_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "character_id"
+    t.index ["character_id"], name: "index_aliases_on_character_id"
     t.index ["divinity_id"], name: "index_aliases_on_divinity_id"
+  end
+
+  create_table "book_characters", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["book_id"], name: "index_book_characters_on_book_id"
+    t.index ["character_id"], name: "index_book_characters_on_character_id"
+  end
+
+  create_table "book_city_states", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "city_state_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["book_id"], name: "index_book_city_states_on_book_id"
+    t.index ["city_state_id"], name: "index_book_city_states_on_city_state_id"
+  end
+
+  create_table "book_organizations", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["book_id"], name: "index_book_organizations_on_book_id"
+    t.index ["organization_id"], name: "index_book_organizations_on_organization_id"
+  end
+
+  create_table "book_points_of_interest", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "point_of_interest_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["book_id"], name: "index_book_points_of_interest_on_book_id"
+    t.index ["point_of_interest_id"], name: "index_book_points_of_interest_on_point_of_interest_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -27,9 +65,69 @@ ActiveRecord::Schema.define(version: 20170214025643) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.float    "height"
+    t.float    "mass"
+    t.string   "hair_color"
+    t.string   "skin_tone"
+    t.string   "eye_color"
+    t.string   "weapon_of_choice"
+    t.string   "profession"
+    t.string   "gender"
+    t.boolean  "bondsmage"
+    t.boolean  "organization_leader"
+    t.integer  "city_state_id"
+    t.integer  "organization_id"
+    t.integer  "divinity_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["city_state_id"], name: "index_characters_on_city_state_id"
+    t.index ["divinity_id"], name: "index_characters_on_divinity_id"
+    t.index ["organization_id"], name: "index_characters_on_organization_id"
+  end
+
+  create_table "city_states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "terrain"
+    t.integer  "population"
+    t.string   "currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "region_id"
+    t.string   "language"
+    t.index ["region_id"], name: "index_city_states_on_region_id"
+  end
+
   create_table "divinities", force: :cascade do |t|
     t.string   "name"
     t.string   "ideology"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "purpose"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "governing_body"
+    t.integer  "city_state_id"
+    t.index ["city_state_id"], name: "index_organizations_on_city_state_id"
+  end
+
+  create_table "points_of_interest", force: :cascade do |t|
+    t.string   "name"
+    t.string   "purpose"
+    t.integer  "city_state_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["city_state_id"], name: "index_points_of_interest_on_city_state_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "direction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
