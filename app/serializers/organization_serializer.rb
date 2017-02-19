@@ -1,5 +1,5 @@
 class OrganizationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :purpose, :created_at, :updated_at, :members, :leader, :first_appears, :appears_in
+  attributes :id, :name, :purpose, :governing_body, :created_at, :updated_at, :members, :leader, :first_appears, :appears_in
   belongs_to :city_state
 
   def members
